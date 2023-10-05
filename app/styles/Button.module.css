@@ -1,0 +1,28 @@
+.btn {
+    color: rgb(var(--white));
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.785rem 2rem;
+    font-size: 1rem;
+    transition: 
+        color 0.2s ease-in-out,
+        background-color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: rgb(var(--blue));
+    box-shadow: none;
+}
+
+.active {
+    background-color: rgb(var(--purple));
+    box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(var(--purple), 0.9);
+}
+
+.inactive {
+
+}
+
+
