@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from './components/Button';
+import PageLayout from './layouts/PageLayout';
 
 export default function Home() {
   return (
-    <>
-    <Button/>
-    </>
+    <PageLayout/>
   )
 }

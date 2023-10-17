@@ -4,8 +4,37 @@
 
 :root {
     --purple: 99, 102, 241;
-    --white: 255, 255, 255;
+    --purple-warm: 139, 92, 246;
+    --pink: 217, 70, 239;
     --blue: 64, 68, 238;
+    --white: 255, 255, 255;
+    --title-color: 19, 16, 34;
+    --text-color: 88, 92, 123;
+}
+
+h1 {
+    font-size: calc(1.475rem + 2.7vw);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.title {
+    color: rgb(var(--title-color));
+}
+
+.text {
+    color: rgb(var(--text-color));
+}
+
+.text-highlighted {
+    background: linear-gradient(
+        to right, 
+        rgb(var(--purple)), 
+        rgb(var(--purple-warm)), 
+        rgb(var(--pink))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
