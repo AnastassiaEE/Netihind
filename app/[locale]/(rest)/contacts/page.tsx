@@ -1,6 +1,6 @@
 import { use } from 'react';
 import ContactCards from '@/components/ui/contacts/ContactCards';
-import ContactForm from '@/components/ui/form/forms/ContactForm';
+import ContactForm from '@/components/ui/forms/ContactForm';
 import { H1, H2 } from '@/components/ui/headings/RestPageHeadings';
 import SectionLayout from '@/layouts/SectionLayout';
 import { Locale, useTranslations } from 'next-intl';

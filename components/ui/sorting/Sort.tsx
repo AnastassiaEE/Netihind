@@ -1,10 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import SelectOption from '@/components/ui/form/fields/select/SelectOption';
-import { SelectVariant } from '@/types/form.types';
-import SortIcon from '@mui/icons-material/Sort';
-import Select from '@/components/ui/form/fields/select/Select';
+import { ArrowUpDown } from 'lucide-react';
+import Select, { SelectVariant } from '@/components/ui/select/Select';
+import SelectItem from '@/components/ui/select/SelectItem';
 import { translateKey } from '@/utils/translationHelper';
 
 export default function Sort({
@@ -29,23 +28,19 @@ export default function Sort({
   return (
     <Select
       variant={variant}
-      name={`sort-${name}`}
+      size="md"
       buttonLabel={translateKey(t, `${name}.buttonLabel`)}
       label={translateKey(t, `${name}.ariaLabel`)}
-      selected={translateKey(t, `${name}.options.${selectedBySort}`)}
+      selected={selectedBySort}
       openDirection={openDirection}
-      Icon={SortIcon}
-      onChange={(name, value) => onSortChange(value)}
+      Icon={ArrowUpDown}
+      onChange={onSortChange}
       className={className}
     >
       {options.map((option) => (
-        <SelectOption
-          key={option}
-          value={option}
-          isSelected={option === selectedBySort}
-        >
+        <SelectItem key={option} value={option} size="md">
           {translateKey(t, `${name}.options.${option}`)}
-        </SelectOption>
+        </SelectItem>
       ))}
     </Select>
   );

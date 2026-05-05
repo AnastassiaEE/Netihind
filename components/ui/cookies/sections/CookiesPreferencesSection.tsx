@@ -1,4 +1,4 @@
-import ToggleSwitch from '@/components/ui/form/fields/toggle/ToggleSwitch';
+import ToggleSwitch from '@/components/ui/inputs/ToggleSwitch';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import CookieDetails from '@/components/ui/cookies/CookieDetails';

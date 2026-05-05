@@ -3,7 +3,7 @@ import providerLogos from '@/data/providerLogos';
 import LogoCards from '@/components/ui/logo/LogoCards';
 import { H1 } from '@/components/ui/headings/HomePageHeadings';
 import GradientMesh from '@/components/ui/mesh/GradientMesh';
-import MaaAmetAddressForm from '@/components/ui/form/forms/MaaAmetAddressForm';
+import MaaAmetAddressForm from '@/components/ui/forms/MaaAmetAddressForm';
 import { useTranslations } from 'next-intl';
 
 export default function TopSection() {

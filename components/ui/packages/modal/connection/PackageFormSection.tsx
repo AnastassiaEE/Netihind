@@ -1,4 +1,4 @@
-import PackageForm from '@/components/ui/form/forms/PackageForm';
+import PackageForm from '@/components/ui/forms/PackageForm';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import { Package } from '@/types/packages.types';
 import HomeIcon from '@mui/icons-material/Home';
@@ -15,7 +15,7 @@ export default function PackageFormSection({
   return (
     <PackageModalSection title={t('fillForm')} className="bg-white">
       <p className="mb-4">
-        <HomeIcon className="mr-1 inline align-sub text-primary" />
+        <HomeIcon className="text-primary mr-1 inline align-sub" />
         {address}
       </p>
       <PackageForm

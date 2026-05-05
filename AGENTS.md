@@ -231,9 +231,10 @@
 import classNames from 'classnames';
 <button className={classNames('btn', { 'btn-active': isActive })}>
 
-// With tailwind-variants for complex variants
-import { tv } from 'tailwind-variants';
-const button = tv({ base: 'btn', variants: { color: { primary: 'btn-primary' }}});
+// With cva for complex variants
+import { cva } from 'class-variance-authority';
+const button = cva('btn', { variants: { color: { primary: 'btn-primary' }}});
+<button className={button({ color: 'primary' })}>
 ```
 
 ---
@@ -260,11 +261,11 @@ Use path aliases defined in `tsconfig.json`:
 
 ```typescript
 // Components (default exports)
-import ContactForm from '@/components/ui/form/ContactForm';
+import ContactForm from '@/components/ui/forms/ContactForm';
 import BlogSlider from '@/components/ui/blog/BlogSlider';
 
 // UI Library components (named exports)
-import { Button, buttonVariants } from '@/components/ui/form/buttons/Button';
+import { Button, buttonVariants } from '@/components/ui/forms/buttons/Button';
 
 // Utilities (named exports)
 import { formatMoney } from '@/utils/numberFormatter';

@@ -1,9 +1,11 @@
 import { SvgIconComponent } from '@mui/icons-material';
-import Input from '@/components/ui/form/fields/input/Input';
+import Input from '@/components/ui/inputs/Input';
 import classNames from 'classnames';
 
-interface IconInputProps
-  extends Omit<React.ComponentProps<typeof Input>, 'children'> {
+interface IconInputProps extends Omit<
+  React.ComponentProps<typeof Input>,
+  'children'
+> {
   icon: {
     Icon: SvgIconComponent;
     isVisible: boolean;

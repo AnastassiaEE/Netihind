@@ -1,11 +1,11 @@
 import { FieldErrorSize } from '@/types/form.types';
-import { tv } from 'tailwind-variants';
+import { cva } from 'class-variance-authority';
 
-const errorClasses = tv({
-  base: 'text-error absolute font-medium',
+const errorClasses = cva('text-error absolute font-medium', {
   variants: {
     size: {
       sm: 'text-xs',
+      md: 'text-xs',
       lg: 'text-sm',
     },
   },

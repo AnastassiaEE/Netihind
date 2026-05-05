@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import { Manrope } from 'next/font/google';
 import ScrollTopButton from '@/components/ui/buttons/ScrollTopButton';
+import classNames from 'classnames';
 import { routing } from 'i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -48,7 +49,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
-      <body className={`${manrope.className} relative`}>
+      <body className={classNames(manrope.className, 'relative')}>
         <NextIntlClientProvider timeZone={timeZone}>
           <AppRouterCacheProvider
             options={{

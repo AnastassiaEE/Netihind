@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/buttons/Button';
 import '@/styles/addressForm.css';
-import FieldError from '@/components/ui/form/fields/FieldError';
+import classNames from 'classnames';
+import FieldError from '@/components/ui/inputs/FieldError';
 import { useTranslations } from 'next-intl';
 import useMaaAmetAddressForm from '@/hooks/useMaaAmetAddressForm';
 import AddressFormLoader from '@/components/ui/loaders/AddressFormLoader';
@@ -30,7 +31,7 @@ export default function MaaAmetAddressForm() {
       <form
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
-        className={isFormVisible() ? 'visible' : 'invisible'}
+        className={classNames({ visible: isFormVisible(), invisible: !isFormVisible() })}
       >
         <div className="relative gap-1 md:flex">
           <div className="grow">

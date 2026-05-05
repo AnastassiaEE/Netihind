@@ -2,9 +2,10 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
 import classNames from 'classnames';
+import { interactiveElementSizeVariants } from '@/components/ui/variants/sizeVariants';
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-md border font-semibold transition-all select-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  'group/button inline-flex shrink-0 items-center justify-center rounded-md border font-semibold transition-all select-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {
@@ -25,9 +26,9 @@ const buttonVariants = cva(
         link: 'border-transparent text-primary underline-offset-4 hover:text-primary-dark',
       },
       size: {
-        xs: "h-7 gap-1 px-2 text-xs rounded-md [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-10 gap-1.5 px-3 text-sm rounded-md [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-12 gap-2 px-6 text-sm rounded-md [&_svg:not([class*='size-'])]:size-5",
+        sm: '',
+        md: '',
+        lg: '',
       },
     },
     defaultVariants: {
@@ -54,7 +55,11 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={classNames(buttonVariants({ variant, size, className }))}
+      className={classNames(
+        buttonVariants({ variant, size }),
+        interactiveElementSizeVariants({ size }),
+        className,
+      )}
       {...props}
     />
   );

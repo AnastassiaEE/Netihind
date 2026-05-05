@@ -1,6 +1,6 @@
 import { Filter } from '@/types/filters.types';
-import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
-import { CheckboxSize } from '@/types/form.types';
+import Checkbox from '@/components/ui/inputs/Checkbox';
+import { ComponentSize } from '@/components/ui/variants/sizeVariants';
 import { OnFilterChange } from '@/types/filters.types';
 
 export default function CheckboxFilter({
@@ -11,7 +11,7 @@ export default function CheckboxFilter({
   onFilterChange,
 }: {
   name: string;
-  size?: CheckboxSize;
+  size?: ComponentSize;
   filter: Filter;
   selectedValues: string[];
   onFilterChange: OnFilterChange;

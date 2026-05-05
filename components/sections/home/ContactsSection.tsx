@@ -1,5 +1,5 @@
 import SectionLayout from '@/layouts/SectionLayout';
-import ContactForm from '@/components/ui/form/forms/ContactForm';
+import ContactForm from '@/components/ui/forms/ContactForm';
 import ContactLinks from '@/components/ui/contacts/ContactLinks';
 import ContactLink from '@/components/ui/contacts/ContactLink';
 import { contacts } from '@/data/contacts';

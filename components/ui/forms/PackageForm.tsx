@@ -1,17 +1,48 @@
 'use client';
-import FormResponse from '@/components/ui/form/forms/FormResponse';
-import { Add } from '@mui/icons-material';
-import IconInput from '@/components/ui/form/fields/input/IconInput';
-import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
-import Textarea from '@/components/ui/form/fields/input/Textarea';
-import Input from '@/components/ui/form/fields/input/Input';
+
+import FormResponse from '@/components/ui/feedback/FormResponse';
+import IconInput from '@/components/ui/inputs/IconInput';
+import Checkbox from '@/components/ui/inputs/Checkbox';
+import Textarea from '@/components/ui/inputs/Textarea';
+import Input from '@/components/ui/inputs/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
+import { Add } from '@mui/icons-material';
+import { Package, PackageAction } from '@/types/packages.types';
 import SendButton from '@/components/ui/buttons/SendButton';
 import { translateKey } from '@/utils/translationHelper';
 
-export default function ContactForm() {
+export default function PackageForm({
+  action = 'connection',
+  address,
+  packageData,
+}: {
+  action?: PackageAction;
+  address: string;
+  packageData?: Package;
+}) {
   const t = useTranslations('Form');
+  //const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];
+
+  const filteredPackageData = {
+    'Paketi ID': packageData?.id ?? '',
+    'Paketi nimi': packageData?.name ?? '',
+    'Teenuse pakkuja': packageData?.provider.name ?? '',
+    Tehnoloogia: packageData?.technology.name ?? '',
+    Kiirused: packageData
+      ? `${packageData.speed.download} / ${packageData.speed.upload}`
+      : '',
+    'Paketi hind': packageData?.price ?? '',
+    ...(packageData?.discount && {
+      'Paketi soodushind': packageData.discount.price,
+    }),
+    ...(packageData?.discount_campaigns &&
+      packageData?.discount_campaigns.length > 0 && {
+        Kampaania: packageData.discount_campaigns
+          .map((campaign) => campaign.description)
+          .join(', '),
+      }),
+  };
 
   const fields = {
     name: {
@@ -30,6 +61,10 @@ export default function ContactForm() {
       initialValue: '',
       isRequired: false,
     },
+    // 'call-time': {
+    //   initialValue: 'hour',
+    //   isRequired: false,
+    // },
     policy: {
       initialValue: false,
       isRequired: true,
@@ -44,7 +79,7 @@ export default function ContactForm() {
     handleChange,
     handleBlur,
     handleSubmit,
-  } = useForm(fields, 'contact');
+  } = useForm(fields, action, { address: address, ...filteredPackageData });
 
   return (
     <form onSubmit={handleSubmit} autoComplete="on" noValidate>
@@ -85,11 +120,11 @@ export default function ContactForm() {
           value={values.phone as string}
           isValid={!errors.phone}
           error={translateKey(t, errors.phone)}
-          required={fields['phone'].isRequired}
           icon={{ Icon: Add, isVisible: true }}
+          required={fields['phone'].isRequired}
         />
       </div>
-      <div className="mb-6">
+      <div className="mb-3">
         <Textarea
           name="message"
           label={{ value: t('labels.message'), className: 'font-semibold' }}
@@ -99,6 +134,22 @@ export default function ContactForm() {
           required={fields['message'].isRequired}
         />
       </div>
+      {/* <div className="mb-6">
+        <Select
+          variant="labeled"
+          label={t('labels.time')}
+          selected={values['call-time'] as string}
+          openDirection="top"
+          onChange={(value) => handleSelectChange('call-time', value)}
+          className="p-0!"
+        >
+          {timeOptions.map((option) => (
+            <SelectItem key={option} value={option}>
+              {t(`selectOptions.${option}` as any)}
+            </SelectItem>
+          ))}
+        </Select>
+      </div> */}
       <div className="mb-6">
         <Checkbox
           name="policy"

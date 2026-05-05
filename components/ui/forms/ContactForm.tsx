@@ -1,48 +1,17 @@
 'use client';
-
-import FormResponse from '@/components/ui/form/forms/FormResponse';
-import IconInput from '@/components/ui/form/fields/input/IconInput';
-import Checkbox from '@/components/ui/form/fields/checkbox/Checkbox';
-import Textarea from '@/components/ui/form/fields/input/Textarea';
-import Input from '@/components/ui/form/fields/input/Input';
+import FormResponse from '@/components/ui/feedback/FormResponse';
+import { Add } from '@mui/icons-material';
+import IconInput from '@/components/ui/inputs/IconInput';
+import Checkbox from '@/components/ui/inputs/Checkbox';
+import Textarea from '@/components/ui/inputs/Textarea';
+import Input from '@/components/ui/inputs/Input';
 import useForm from '@/hooks/useForm';
 import { useTranslations } from 'next-intl';
-import { Add } from '@mui/icons-material';
-import { Package, PackageAction } from '@/types/packages.types';
 import SendButton from '@/components/ui/buttons/SendButton';
 import { translateKey } from '@/utils/translationHelper';
 
-export default function PackageForm({
-  action = 'connection',
-  address,
-  packageData,
-}: {
-  action?: PackageAction;
-  address: string;
-  packageData?: Package;
-}) {
+export default function ContactForm() {
   const t = useTranslations('Form');
-  //const timeOptions = ['hour', '9-11', '11-13', '13-15', '15-17', '17-20'];
-
-  const filteredPackageData = {
-    'Paketi ID': packageData?.id ?? '',
-    'Paketi nimi': packageData?.name ?? '',
-    'Teenuse pakkuja': packageData?.provider.name ?? '',
-    Tehnoloogia: packageData?.technology.name ?? '',
-    Kiirused: packageData
-      ? `${packageData.speed.download} / ${packageData.speed.upload}`
-      : '',
-    'Paketi hind': packageData?.price ?? '',
-    ...(packageData?.discount && {
-      'Paketi soodushind': packageData.discount.price,
-    }),
-    ...(packageData?.discount_campaigns &&
-      packageData?.discount_campaigns.length > 0 && {
-        Kampaania: packageData.discount_campaigns
-          .map((campaign) => campaign.description)
-          .join(', '),
-      }),
-  };
 
   const fields = {
     name: {
@@ -61,10 +30,6 @@ export default function PackageForm({
       initialValue: '',
       isRequired: false,
     },
-    // 'call-time': {
-    //   initialValue: 'hour',
-    //   isRequired: false,
-    // },
     policy: {
       initialValue: false,
       isRequired: true,
@@ -79,7 +44,7 @@ export default function PackageForm({
     handleChange,
     handleBlur,
     handleSubmit,
-  } = useForm(fields, action, { address: address, ...filteredPackageData });
+  } = useForm(fields, 'contact');
 
   return (
     <form onSubmit={handleSubmit} autoComplete="on" noValidate>
@@ -120,11 +85,11 @@ export default function PackageForm({
           value={values.phone as string}
           isValid={!errors.phone}
           error={translateKey(t, errors.phone)}
-          icon={{ Icon: Add, isVisible: true }}
           required={fields['phone'].isRequired}
+          icon={{ Icon: Add, isVisible: true }}
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-6">
         <Textarea
           name="message"
           label={{ value: t('labels.message'), className: 'font-semibold' }}
@@ -134,27 +99,6 @@ export default function PackageForm({
           required={fields['message'].isRequired}
         />
       </div>
-      {/* <div className="mb-6">
-        <Select
-          variant="labeled"
-          name="call-time"
-          label={t('labels.time')}
-          selected={t(`selectOptions.${values['call-time'] as string}` as any)}
-          openDirection="top"
-          onChange={handleSelectChange}
-          className="p-0!"
-        >
-          {timeOptions.map((option) => (
-            <SelectOption
-              key={option}
-              value={option}
-              isSelected={values['call-time'] === option}
-            >
-              {t(`selectOptions.${option}` as any)}
-            </SelectOption>
-          ))}
-        </Select>
-      </div> */}
       <div className="mb-6">
         <Checkbox
           name="policy"
