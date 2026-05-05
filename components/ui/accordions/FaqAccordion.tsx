@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordions/Accordion';
+} from '@/components/ui/accordions/AccordionPrimitive';
 import Arrow from '@/components/ui/icons/Arrow';
 import classNames from 'classnames';
 

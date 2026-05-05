@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { Accordion as AccordionPrimitive } from 'radix-ui';
+import {
+  Root,
+  Item,
+  Trigger,
+  Content,
+  Header,
+} from '@radix-ui/react-accordion';
 import classNames from 'classnames';
 
 /**
@@ -11,12 +17,9 @@ import classNames from 'classnames';
  * For specific use cases, create wrapper components (e.g., FaqAccordion).
  */
 
-function Accordion({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Root>) {
+function Accordion({ className, ...props }: React.ComponentProps<typeof Root>) {
   return (
-    <AccordionPrimitive.Root
+    <Root
       data-slot="accordion"
       className={classNames('w-full', className)}
       {...props}
@@ -27,14 +30,8 @@ function Accordion({
 function AccordionItem({
   className,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-  return (
-    <AccordionPrimitive.Item
-      data-slot="accordion-item"
-      className={className}
-      {...props}
-    />
-  );
+}: React.ComponentProps<typeof Item>) {
+  return <Item data-slot="accordion-item" className={className} {...props} />;
 }
 
 function AccordionTrigger({
@@ -42,12 +39,12 @@ function AccordionTrigger({
   children,
   icon,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Trigger> & {
+}: React.ComponentProps<typeof Trigger> & {
   icon?: React.ReactNode;
 }) {
   return (
-    <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger
+    <Header className="flex">
+      <Trigger
         data-slot="accordion-trigger"
         className={classNames(
           'group/accordion-trigger flex w-full items-center justify-between text-left transition-all',
@@ -57,8 +54,8 @@ function AccordionTrigger({
       >
         {children}
         {icon && <span data-slot="accordion-icon">{icon}</span>}
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
+      </Trigger>
+    </Header>
   );
 }
 
@@ -66,15 +63,15 @@ function AccordionContent({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+}: React.ComponentProps<typeof Content>) {
   return (
-    <AccordionPrimitive.Content
+    <Content
       data-slot="accordion-content"
       className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden"
       {...props}
     >
       <div className={className}>{children}</div>
-    </AccordionPrimitive.Content>
+    </Content>
   );
 }
 

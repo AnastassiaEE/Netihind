@@ -67,10 +67,9 @@ import classNames from 'classnames';
 ### ✅ DOs
 
 ```tsx
-// ALWAYS use classNames - for ALL components including shadcn/ui
+// ALWAYS use classNames for ALL components
 <div className={classNames('base-class', { active: isActive })}>
 
-// Even for shadcn components - use classNames, NOT cn()
 import classNames from 'classnames';
 <Button className={classNames('custom-styles', className)} />
 ```
@@ -78,4 +77,4 @@ import classNames from 'classnames';
 ## Notes
 
 - The `classNames` library is already installed in the project
-- Use `classNames` for ALL components without exceptions, including shadcn/ui components
+- Use `classNames` for ALL components without exceptions

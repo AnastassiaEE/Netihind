@@ -154,7 +154,6 @@
 - **Exports**:
   - **Components**: Use `export default` for React components
   - **Utilities**: Always use named exports (`export const`/`export function`)
-  - **UI Library components** (shadcn/ui): Use named exports when exporting multiple items (e.g., `export { Button, buttonVariants }`)
 
 ### Component Patterns
 

@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@/components/ui/accordions/Accordion';
+} from '@/components/ui/accordions/AccordionPrimitive';
 import Arrow from '@/components/ui/icons/Arrow';
 
 export default function PackagesFilterAccordion({

@@ -1,5 +1,5 @@
 import TextDivider from '@/components/ui/dividers/TextDivider';
-import Tooltip from '@/components/ui/overlay/Tooltip';
+import Tooltip from '@/components/ui/overlay/tooltip/Tooltip';
 import PackageModalSection from '@/components/ui/packages/modal/PackageModalSection';
 import { useTranslationsContext } from '@/context/TranslationsContext';
 import { EquipmentItem } from '@/types/packages.types';
