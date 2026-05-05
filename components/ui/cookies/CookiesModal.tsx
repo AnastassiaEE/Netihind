@@ -2,8 +2,12 @@
 
 import CookiesButton from '@/components/ui/cookies/CookiesButton';
 import Dialogue from '@/components/ui/overlay/Dialog';
-import Tabs from '@/components/ui/tabs/Tabs';
-import TabPanel from '@/components/ui/tabs/TabPanel';
+import {
+  Tabs,
+  TabsList,
+  Tab,
+  TabPanel,
+} from '@/components/ui/tabs/TabsPrimitive';
 import { useTranslations } from 'next-intl';
 import CookiesIntroSection from '@/components/ui/cookies/sections/CookiesIntroSection';
 import CookiesPreferencesSection from '@/components/ui/cookies/sections/CookiesPreferencesSection';
@@ -38,17 +42,28 @@ export default function CookiesModal() {
         dialogRef={cookiesModalRef}
         className="flex flex-col overflow-hidden bg-white"
       >
-        <Tabs name="cookies" tabs={tabs}>
-          <TabPanel className="h-auto space-y-3 overflow-y-auto">
+        <Tabs defaultValue="cookies-tab-1">
+          <TabsList>
+            <Tab value="cookies-tab-1">{tabs[0]}</Tab>
+            <Tab value="cookies-tab-2">{tabs[1]}</Tab>
+            <Tab value="cookies-tab-3">{tabs[2]}</Tab>
+          </TabsList>
+          <TabPanel
+            value="cookies-tab-1"
+            className="h-auto space-y-3 overflow-y-auto"
+          >
             <CookiesIntroSection />
           </TabPanel>
-          <TabPanel className="h-auto overflow-y-auto">
+          <TabPanel value="cookies-tab-2" className="h-auto overflow-y-auto">
             <CookiesPreferencesSection
               preferences={preferences}
               togglePreference={togglePreference}
             />
           </TabPanel>
-          <TabPanel className="h-auto space-y-3 overflow-y-auto">
+          <TabPanel
+            value="cookies-tab-3"
+            className="h-auto space-y-3 overflow-y-auto"
+          >
             <CookiesInfoSection />
           </TabPanel>
         </Tabs>
