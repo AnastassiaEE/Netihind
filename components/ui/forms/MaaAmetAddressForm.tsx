@@ -31,7 +31,10 @@ export default function MaaAmetAddressForm() {
       <form
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
-        className={classNames({ visible: isFormVisible(), invisible: !isFormVisible() })}
+        className={classNames({
+          visible: isFormVisible(),
+          invisible: !isFormVisible(),
+        })}
       >
         <div className="relative gap-1 md:flex">
           <div className="grow">
