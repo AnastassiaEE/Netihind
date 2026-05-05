@@ -13,14 +13,14 @@ export default function CookiesActions({
   return (
     <div
       className={classNames(
-        'flex w-full justify-center gap-3 max-sm:flex-wrap',
+        'flex w-full justify-center gap-3 max-sm:flex-col',
         className,
       )}
     >
       <Button
         variant="outline"
         size="lg"
-        className="flex-1"
+        className="flex-1 max-sm:flex-initial"
         onClick={() => managePreferences('decline-all')}
       >
         {t('declineAll')}
@@ -28,14 +28,14 @@ export default function CookiesActions({
       <Button
         variant="outline"
         size="lg"
-        className="flex-1"
+        className="flex-1 max-sm:flex-initial"
         onClick={() => managePreferences('accept-selected')}
       >
         {t('acceptSelected')}
       </Button>
       <Button
         size="lg"
-        className="flex-1"
+        className="flex-1 max-sm:flex-initial"
         onClick={() => managePreferences('accept-all')}
       >
         {t('acceptAll')}

@@ -15,7 +15,7 @@ export default function PackageCardActions({
     <div className={className}>
       <Button
         size="lg"
-        className="flex-1 rounded-t-none rounded-br-none"
+        className="order-2 w-full rounded-t-none rounded-b-md sm:order-1 sm:flex-1 sm:rounded-b-none sm:rounded-br-none sm:rounded-bl-md"
         onClick={() => onActionClick('connection')}
       >
         {t('connect')}
@@ -23,7 +23,7 @@ export default function PackageCardActions({
       <Button
         variant="outline"
         size="lg"
-        className="flex-1 rounded-t-none rounded-bl-none"
+        className="order-1 w-full rounded-t-none rounded-b-none sm:order-2 sm:flex-1 sm:rounded-b-md sm:rounded-br-md sm:rounded-bl-none"
         onClick={() => onActionClick('details')}
       >
         {t('details')}

@@ -74,7 +74,10 @@ export default function PackageCard({
           className="border-muted-light flex flex-col items-center justify-center gap-1 p-4 max-lg:border-t lg:row-span-3"
         />
       </div>
-      <PackageCardActions onActionClick={onActionClick} className="flex" />
+      <PackageCardActions
+        onActionClick={onActionClick}
+        className="flex flex-col sm:flex-row"
+      />
     </article>
   );
 }
